@@ -1,13 +1,13 @@
 const gridCanvas = document.getElementById('GridCanvas');
 
-gridCanvas.height = 450;
-gridCanvas.width = 350;
+gridCanvas.height = 400;
+gridCanvas.width = 300;
 const gridCanvasRect = gridCanvas.getBoundingClientRect()
 
 const gridCtx = gridCanvas.getContext('2d');
 
-let mousex = undefined;
-let mousey = undefined;
+let mouseDotX = undefined;
+let mouseDoty = undefined;
 
 let particlesArray = [];
 
@@ -74,19 +74,19 @@ class Grid{
     }
 }
 
-x = new Grid(gridCanvas);
-x.draw();
+const newDotGrid = new Grid(gridCanvas);
+newDotGrid.draw();
 
 document.addEventListener('mousemove', (mouse)=>{
-    mousex = mouse.x - gridCanvasRect.left;
-    mousey = mouse.y - gridCanvasRect.top;
+    mouseDotX = mouse.x - gridCanvasRect.left;
+    mouseDoty = mouse.y - gridCanvasRect.top;
 });
 
 function updateall(){
     for (let i = 0; i < particlesArray.length; i++) {
         // Calculate distance between mouse and points
-        x_diff = mousex - particlesArray[i].x;
-        y_diff = mousey - particlesArray[i].y;
+        x_diff = mouseDotX - particlesArray[i].x;
+        y_diff = mouseDoty - particlesArray[i].y;
         dist = Math.sqrt(x_diff*x_diff + y_diff*y_diff);
         if(dist<300){
             particlesArray[i].update(8-(dist/20));
