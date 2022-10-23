@@ -9,10 +9,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="flex gap-8 h-screen items-center justify-center">
-    <canvas id="GridCanvas" class="card"></canvas>
-    <canvas id="ArrowCanvas" class="card"></canvas>
-    <script src="gridCanvas.js"></script>
-    <script src="arrowCanvas.js"></script>
+<body class="py-20">
+    <main class="flex flex-wrap gap-8 items-center justify-center">
+        <canvas id="GridCanvas" class="card"></canvas>
+        <canvas id="ArrowCanvas" class="card"></canvas>
+        <div id="ArrowCanvas2" class="card"></div>
+        <div id="VaporizeDivs" class="card">
+            <ul class="bg-bubbles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <canvas id="LightningCanvas" class="card"></canvas>
+        <div id="SnowCanvas" class="card"></div>
+        <div id="MetaballCanvas" class="card"></div>
+        <div id="SquareCanvas" class="card"></div>
+    </main>
 </body>
+<script src="gridCanvas.js"></script>
+<script src="arrowCanvas.js"></script>
+<script src="lightningCanvas.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sparticles@1.3.0/dist/sparticles.js"></script>
+<script src="snowCanvas.js"></script>
+
+<script src="metaballCanvas.js"></script>
+
+<script src="arrow.js"></script>
 </html>

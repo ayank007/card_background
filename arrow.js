@@ -1,19 +1,19 @@
-const arrowCanvas = document.getElementById('ArrowCanvas')
-const arrowCanvasRect = arrowCanvas.getBoundingClientRect()
+const ArrowCanvas2 = document.getElementById('ArrowCanvas2')
+const ArrowCanvas2Rect = ArrowCanvas2.getBoundingClientRect()
 
-let gap = 30
-let cols = Math.ceil(arrowCanvasRect.width / gap);
-let rows = Math.ceil(arrowCanvasRect.height / gap);
+let gap = 40
+let cols = Math.ceil(ArrowCanvas2Rect.width / gap);
+let rows = Math.ceil(ArrowCanvas2Rect.height / gap);
 
 let grid = ''
 for (let i=0; i<rows; i++) {
     let row = ''
     for (let j=0; j<cols; j++) {
-        row += '<i class="fa-solid fa-chevron-left arrow"></i>'
+        row += '<div class="arrow"><i class="fa-solid fa-chevron-left"></i></div>'
     }
     grid += `<div>${row}</div>`
 }
-arrowCanvas.innerHTML = `<div class="background">${grid}</div>`
+ArrowCanvas2.innerHTML = grid
 
 function angle(cx, cy, ex, ey) {
     const dy = ey - cy
@@ -25,19 +25,21 @@ function angle(cx, cy, ex, ey) {
 
 // defining anchor 
 // const anchor = document.getElementById('anchor')
-const anchorRekt = arrowCanvas.getBoundingClientRect()
-const anchorX = anchorRekt.left + anchorRekt.width / 2
-const anchorY = anchorRekt.top + anchorRekt.height / 2
 
 const arrows = document.querySelectorAll('.arrow')
 
-document.addEventListener('mousemove', e => {
-    const mouseX = e.clientX
-    const mouseY = e.clientY
+let mouseX = undefined
+let mouseY = undefined
 
-    const angleDeg = angle(mouseX, mouseY, anchorX, anchorY)
+document.addEventListener('mousemove', e => {
+    mouseX = e.clientX
+    mouseY = e.clientY
 
     arrows.forEach(arrow => {
-        arrow.style.transform = `rotate(${90 + angleDeg}deg)`
+        const arrowRekt = arrow.getBoundingClientRect()
+        const anchorX = arrowRekt.left + arrowRekt.width / 2
+        const anchorY = arrowRekt.top + arrowRekt.height / 2
+        const angleDeg = angle(mouseX, mouseY, anchorX, anchorY)
+        arrow.style.transform = `rotate(${angleDeg}deg)`
     })
 })
